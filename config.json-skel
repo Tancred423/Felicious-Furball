@@ -1,7 +1,7 @@
 {
     "token": "",
-	"clientId": "",
-	"guildId": "",
+    "clientId": "",
+    "guildId": "",
     "channelId": "",
     "mentionRoleId": "",
     "cronSchedule": "0 18 * * 2-5",
