@@ -16,6 +16,7 @@ const client = new Client({
 
 client.once(Events.ClientReady, () => {
   console.log(`Logged in as ${client.user.tag}`)
+  setIslandUpdatePresence()
 
   const guild = client.guilds.cache.get(config.guildId)
   const channel = guild.channels.cache.get(config.channelId)
@@ -48,17 +49,7 @@ client.once(Events.ClientReady, () => {
       const weekday = new Date().getDay()
 
       if (weekday === 2) {
-        client.user.setPresence({
-          activities: [
-            {
-              name: 'custom',
-              state: config.presenceMessage,
-              type: ActivityType.Custom,
-            },
-          ],
-          status: 'online',
-        })
-
+        setIslandUpdatePresence()
         return
       }
 
@@ -73,6 +64,19 @@ client.once(Events.ClientReady, () => {
     },
   )
 })
+
+function setIslandUpdatePresence() {
+  client.user.setPresence({
+    activities: [
+      {
+        name: 'custom',
+        state: config.presenceMessage,
+        type: ActivityType.Custom,
+      },
+    ],
+    status: 'online',
+  })
+}
 
 client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isButton()) {
