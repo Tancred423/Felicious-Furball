@@ -16,7 +16,7 @@ const client = new Client({
 
 client.once(Events.ClientReady, () => {
   console.log(`Logged in as ${client.user.tag}`)
-  setIslandUpdatePresence()
+  updatePresence()
 
   const guild = client.guilds.cache.get(config.guildId)
   const channel = guild.channels.cache.get(config.channelId)
@@ -43,38 +43,32 @@ client.once(Events.ClientReady, () => {
     },
   )
 
-  cron.schedule(
-    '0 * * * *',
-    () => {
-      const weekday = new Date().getDay()
-
-      if (weekday === 2) {
-        setIslandUpdatePresence()
-        return
-      }
-
-      client.user.setPresence({
-        activities: [{ name: '' }],
-        status: 'dnd',
-      })
-    },
-    {
-      scheduled: true,
-      timezone: config.cronTimezone,
-    },
-  )
+  cron.schedule('0 * * * *', updatePresence, {
+    scheduled: true,
+    timezone: config.cronTimezone,
+  })
 })
 
-function setIslandUpdatePresence() {
+function updatePresence() {
+  const weekday = new Date().getDay()
+
+  if (weekday === 2) {
+    client.user.setPresence({
+      activities: [
+        {
+          name: 'custom',
+          state: config.presenceMessage,
+          type: ActivityType.Custom,
+        },
+      ],
+      status: 'online',
+    })
+    return
+  }
+
   client.user.setPresence({
-    activities: [
-      {
-        name: 'custom',
-        state: config.presenceMessage,
-        type: ActivityType.Custom,
-      },
-    ],
-    status: 'online',
+    activities: [{ name: '' }],
+    status: 'dnd',
   })
 }
 
