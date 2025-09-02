@@ -3,7 +3,7 @@
 The Felicious Furball Discord Bot is a specialized bot created to send reminders for updating your FFXIV Island Sanctuary.
 You have the flexibility to establish your own reminder schedule or utilize the pre-set schedule available in the [config file](config.json-skel).
 The default schedule aligns with the days when the Overseas Casual community posts their solution suggestions.
-Reminders are dispatched at 18:00 (6 PM) on these specific days.
+Reminders are dispatched at 18:00 (6 PM) on Tuesdays by default.
 
 ## Features
 

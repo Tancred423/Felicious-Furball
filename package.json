@@ -5,7 +5,9 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "format": "npx prettier . --write",
+    "lint": "npx eslint src/"
   },
   "keywords": [
     "island",
@@ -16,10 +18,14 @@
   "author": "Tancred",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.14.1",
+    "discord.js": "^14.22.1",
     "node-cron": "^3.0.3"
   },
   "devDependencies": {
-    "nodemon": "^3.0.3"
+    "@eslint/js": "^9.34.0",
+    "eslint": "^9.34.0",
+    "globals": "^16.3.0",
+    "nodemon": "^3.0.3",
+    "prettier": "3.6.2"
   }
 }

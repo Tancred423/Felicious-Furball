@@ -4,7 +4,7 @@
     "guildId": "",
     "channelId": "",
     "mentionRoleId": "",
-    "cronSchedule": "0 18 * * 2-5",
+    "cronSchedule": "0 18 * * 2",
     "cronTimezone": "Europe/London",
     "reminderMessage": "Remember to update your island, Peepos! 🏝️",
     "remindMeTooButton": "Remind me as well! 🥺"

@@ -47,42 +47,21 @@ client.once(Events.ClientReady, () => {
     () => {
       const weekday = new Date().getDay()
 
-      switch (weekday) {
-        case 0:
-        case 1:
-        case 6:
-          client.user.setPresence({
-            activities: [{ name: '' }],
-            status: 'dnd',
-          })
-          break
-        case 2:
-          client.user.setPresence({
-            activities: [{ name: 'cycle 2!', type: ActivityType.Watching }],
-            status: 'online',
-          })
-          break
-        case 3:
-          client.user.setPresence({
-            activities: [{ name: 'cycle 3!', type: ActivityType.Watching }],
-            status: 'online',
-          })
-          break
-        case 4:
-          client.user.setPresence({
-            activities: [{ name: 'cycle 4!', type: ActivityType.Watching }],
-            status: 'online',
-          })
-          break
-        case 5:
-          client.user.setPresence({
-            activities: [
-              { name: 'cycle 5, 6 and 7!', type: ActivityType.Watching },
-            ],
-            status: 'online',
-          })
-          break
+      if (weekday === 2) {
+        client.user.setPresence({
+          activities: [
+            { name: 'Update your islands today!', type: ActivityType.Custom },
+          ],
+          status: 'online',
+        })
+
+        return
       }
+
+      client.user.setPresence({
+        activities: [{ name: '' }],
+        status: 'dnd',
+      })
     },
     {
       scheduled: true,
