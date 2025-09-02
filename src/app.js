@@ -50,7 +50,7 @@ client.once(Events.ClientReady, () => {
       if (weekday === 2) {
         client.user.setPresence({
           activities: [
-            { name: 'Update your islands today!', type: ActivityType.Custom },
+            { name: config.presenceMessage, type: ActivityType.Custom },
           ],
           status: 'online',
         })
@@ -89,7 +89,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
       await member.roles.remove(roleId)
 
       await interaction.reply({
-        content: `You will **no longer** be reminded!`,
+        content: config.reminderSignDownMessage,
         ephemeral: true,
       })
       return
@@ -98,7 +98,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     await member.roles.add(roleId)
 
     await interaction.reply({
-      content: `You will be reminded next time!`,
+      content: config.reminderSignUpMessage,
       ephemeral: true,
     })
   } catch (err) {
