@@ -50,7 +50,11 @@ client.once(Events.ClientReady, () => {
       if (weekday === 2) {
         client.user.setPresence({
           activities: [
-            { name: config.presenceMessage, type: ActivityType.Custom },
+            {
+              name: 'custom',
+              state: config.presenceMessage,
+              type: ActivityType.Custom,
+            },
           ],
           status: 'online',
         })
