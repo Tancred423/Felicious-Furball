@@ -1,0 +1,8 @@
+services:
+  app:
+    command: deno task start
+    container_name: felicious-furball
+    env_file:
+      - .env
+    image: ghcr.io/tancred423/felicious-furball:latest
+    restart: unless-stopped

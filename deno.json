@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["deno.window"]
+  },
+  "fmt": {
+    "lineWidth": 120
+  },
+  "imports": {
+    "discord.js": "npm:discord.js@^14.25.0",
+    "node-cron": "npm:node-cron@^3.0.3",
+    "std/dotenv": "https://deno.land/std@0.224.0/dotenv/mod.ts",
+    "std/log": "https://deno.land/std@0.224.0/log/mod.ts"
+  },
+  "tasks": {
+    "start": "deno run --allow-net --allow-env --allow-read src/app.ts",
+    "dev": "deno run --allow-net --allow-env --allow-read --watch src/app.ts",
+    "fmt": "deno fmt",
+    "lint": "deno lint"
+  }
+}
