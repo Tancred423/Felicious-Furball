@@ -66,7 +66,7 @@ client.once(Events.ClientReady, () => {
 });
 
 function updatePresence() {
-  const weekday = new Date().getDay();
+  const weekday = new Date(new Date().toLocaleString("en-US", { timeZone: Deno.env.get("CRON_TIMEZONE")! })).getDay();
 
   if (weekday === 2) {
     client.user?.setPresence({
