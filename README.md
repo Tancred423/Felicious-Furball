@@ -21,15 +21,15 @@ their solution suggestions. Reminders are dispatched at 18:00 (6 PM) on Tuesdays
 
 1. Build and start the container
 
-  ```bash
-  docker compose up -d
-  ```
+```bash
+docker compose up -d
+```
 
 2. Connect to the container
 
-  ```bash
-  docker exec -it felicious-furball-dev bash
-  ```
+```bash
+docker exec -it felicious-furball-dev bash
+```
 
 3. Run commands inside the container
 

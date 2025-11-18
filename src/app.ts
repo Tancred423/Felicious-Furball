@@ -26,7 +26,7 @@ log.setup({
   },
 });
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers], });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers] });
 
 client.once(Events.ClientReady, () => {
   log.info(`Logged in as ${client.user?.tag}`);
