@@ -36,6 +36,8 @@ client.once(Events.ClientReady, () => {
   const channel = guild?.channels.cache.get(Deno.env.get("CHANNEL_ID")!);
   const mentionRole = guild?.roles.cache.get(Deno.env.get("MENTION_ROLE_ID")!);
 
+  const reminderMessage = (Deno.env.get("REMINDER_MESSAGE") ?? "").replaceAll("\\n", "\n");
+
   const button = new ButtonBuilder()
     .setCustomId("remind_me_button")
     .setLabel(Deno.env.get("REMIND_ME_TOO_BUTTON")!)
@@ -48,7 +50,7 @@ client.once(Events.ClientReady, () => {
     () => {
       if (channel && "send" in channel) {
         channel.send({
-          content: mentionRole?.toString() + " " + Deno.env.get("REMINDER_MESSAGE")!,
+          content: mentionRole?.toString() + " " + reminderMessage,
           components: [row],
         });
       }
